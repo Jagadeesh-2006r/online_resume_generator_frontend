@@ -41,7 +41,7 @@ export const exportToPDF = async (elementId, filename = 'resume') => {
 };
 
 export const exportToTXT = (resume) => {
-  const { personal_info: p = {}, career_objective, education = [], experience = [], skills = [], projects = [] } = resume;
+  const { personal_info: p = {}, career_objective , experience = [], skills = [], projects = [] } = resume;
   let text = '';
 
   if (p.name) text += `${p.name}\n`;
