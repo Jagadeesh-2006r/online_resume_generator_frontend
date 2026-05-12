@@ -10,7 +10,7 @@ export default function MinimalTemplate({ resume }) {
     personal_info: p = {}, career_objective,
     education = [], experience = [], skills = [],
     projects = [], certifications = [], achievements = [], languages = [], interests = [],
-    theme_color = '#1F2937', font_family = 'Inter',
+     font_family = 'Inter',
   } = resume;
 
   return (
