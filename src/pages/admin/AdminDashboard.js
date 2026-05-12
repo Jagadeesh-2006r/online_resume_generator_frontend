@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAdminStats, getAdminUsers, toggleUser, adminDeleteResume } from '../../services/api';
 import DashboardLayout from '../../components/layout/DashboardLayout';
 import toast from 'react-hot-toast';
-import { Users, FileText, BarChart2, Shield, Loader2, UserCheck, UserX, Trash2 } from 'lucide-react';
+import { Users, FileText, BarChart2, Shield, Loader2, UserCheck, UserX,} from 'lucide-react';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState(null);
@@ -32,16 +32,6 @@ export default function AdminDashboard() {
       toast.success(`User ${data.user.is_active ? 'activated' : 'deactivated'}`);
     } catch {
       toast.error('Failed to toggle user');
-    }
-  };
-
-  const handleDeleteResume = async (resumeId) => {
-    if (!window.confirm('Delete this resume permanently?')) return;
-    try {
-      await adminDeleteResume(resumeId);
-      toast.success('Resume deleted');
-    } catch {
-      toast.error('Failed to delete resume');
     }
   };
 
