@@ -81,7 +81,7 @@ const languageFields = [
 export default function ResumeBuilder() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { resume, setResume, updateField, updatePersonalInfo, saving, autoSave, loadResume } = useResume();
+  const { resume , updateField, updatePersonalInfo, saving, autoSave, loadResume } = useResume();
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('edit');
   const [showExport, setShowExport] = useState(false);
