@@ -13,7 +13,7 @@ import {
 import { exportToPDF, exportToTXT, exportToDOCX } from '../utils/exportUtils';
 import toast from 'react-hot-toast';
 import {
-  Save, Download, Share2, Eye, EyeOff, Palette, Type,
+  Save, Download, Share2, Eye , Palette, Type,
   QrCode, History, RotateCcw, ChevronLeft, Loader2, Globe, Lock,
 } from 'lucide-react';
 
