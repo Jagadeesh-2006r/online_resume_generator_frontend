@@ -118,10 +118,9 @@ export default function Dashboard() {
     } catch { toast.error('Failed to duplicate'); }
   };
 
-  const safeResumes = Array.isArray(resumes)
-  ? resumes.filter(Boolean)
+ const safeResumes = Array.isArray(resumes)
+  ? resumes.filter((r) => r && typeof r === 'object')
   : [];
-
 const stats = [
   {
     label: 'Total Resumes',
@@ -135,7 +134,7 @@ const stats = [
       safeResumes.length
         ? Math.round(
             safeResumes.reduce(
-              (s, r) => s + (r.ats_score || 0),
+            (s, r) => s + (Number(r?.ats_score) || 0),
               0
             ) / safeResumes.length
           )
@@ -147,9 +146,9 @@ const stats = [
   {
     label: 'Total Views',
     value: safeResumes.reduce(
-      (s, r) => s + (r.view_count || 0),
-      0
-    ),
+            (s, r) => s + (Number(r?.view_count) || 0),
+            0
+          ),
     icon: Eye,
     color: 'bg-purple-500'
   },
