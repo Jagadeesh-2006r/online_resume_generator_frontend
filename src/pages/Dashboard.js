@@ -80,9 +80,9 @@ export default function Dashboard() {
     const load = async () => {
       try {
         const [r, t] = await Promise.all([getResumes(), getTemplates()]);
-        setResumes(r.data.resumes);
-        setTemplates(t.data.templates);
-        if (t.data.templates[0]) setSelectedTemplate(t.data.templates[0].id);
+        setResumes(r.data.resumes || r.data || []);
+        setTemplates(t.data.templates || t.data || []);
+        if ((t.data.templates || t.data || [])[0]) setSelectedTemplate((t.data.templates || t.data || [])[0].id);
       } catch { toast.error('Failed to load data'); }
       finally { setLoading(false); }
     };
