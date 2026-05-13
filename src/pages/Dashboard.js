@@ -118,11 +118,40 @@ export default function Dashboard() {
     } catch { toast.error('Failed to duplicate'); }
   };
 
-  const stats = [
-    { label: 'Total Resumes', value: resumes.length, icon: FileText, color: 'bg-blue-500' },
-    { label: 'Avg ATS Score', value: `${resumes.length ? Math.round(resumes.reduce((s, r) => s + (r.ats_score || 0), 0) / resumes.length) : 0}%`, icon: TrendingUp, color: 'bg-green-500' },
-    { label: 'Total Views', value: resumes.reduce((s, r) => s + (r.view_count || 0), 0), icon: Eye, color: 'bg-purple-500' },
-  ];
+  const safeResumes = Array.isArray(resumes) ? resumes : [];
+
+const stats = [
+  {
+    label: 'Total Resumes',
+    value: safeResumes.length,
+    icon: FileText,
+    color: 'bg-blue-500'
+  },
+  {
+    label: 'Avg ATS Score',
+    value: `${
+      safeResumes.length
+        ? Math.round(
+            safeResumes.reduce(
+              (s, r) => s + (r.ats_score || 0),
+              0
+            ) / safeResumes.length
+          )
+        : 0
+    }%`,
+    icon: TrendingUp,
+    color: 'bg-green-500'
+  },
+  {
+    label: 'Total Views',
+    value: safeResumes.reduce(
+      (s, r) => s + (r.view_count || 0),
+      0
+    ),
+    icon: Eye,
+    color: 'bg-purple-500'
+  },
+];
 
   return (
     <DashboardLayout>
