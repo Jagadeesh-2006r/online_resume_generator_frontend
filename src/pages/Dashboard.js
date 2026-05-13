@@ -118,7 +118,9 @@ export default function Dashboard() {
     } catch { toast.error('Failed to duplicate'); }
   };
 
-  const safeResumes = Array.isArray(resumes) ? resumes : [];
+  const safeResumes = Array.isArray(resumes)
+  ? resumes.filter(Boolean)
+  : [];
 
 const stats = [
   {
